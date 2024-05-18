@@ -1,0 +1,23 @@
+Main day elements:
+    [ ]- Weather description (sunny, cloudy, etc)  
+    [ ]- City (or location)
+    [ ]- Date & time
+    [ ]- Show temperature 
+        [ ]- ºF/ºC conversion button
+    [ ]- Search location form
+
+Additional day elements: 
+    [ ]- Feels like temperature
+    [ ]- Humidity
+    [ ]- Chance of rain
+    [ ]- Wind Speed
+
+Forecast
+    [ ]- Next 3 days
+        [ ]- Date (sunday)
+        [ ]- Temperature
+        [ ]- Temperature min 
+        [ ]- Weather description (as an icon)
+
+Other
+    [ ]- Default location based on user
