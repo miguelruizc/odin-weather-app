@@ -1,12 +1,14 @@
-Main day elements:
-    [ ]- City (or location)
-    [ ]- Date & time
-    [ ]- Weather (sunny, cloudy, etc)  
-    [ ]- Show temperature 
-        [ ]- ºF/ºC conversion button
+Searchbar: 
     [ ]- Search location form
 
-Additional day elements: 
+Main daily elements:
+    [ ]- Location (location, region, country)
+    [ ]- Date & time
+    [ ]- Condition (+ icon)
+    [ ]- Temperature 
+        [ ]- ºF/ºC conversion button
+
+Additional daily elements: 
     [ ]- Feels like temperature
     [ ]- Humidity
     [ ]- Chance of rain
