@@ -1,7 +1,7 @@
 Main day elements:
-    [ ]- Weather description (sunny, cloudy, etc)  
     [ ]- City (or location)
     [ ]- Date & time
+    [ ]- Weather (sunny, cloudy, etc)  
     [ ]- Show temperature 
         [ ]- ºF/ºC conversion button
     [ ]- Search location form
@@ -17,7 +17,7 @@ Forecast
         [ ]- Date (sunday)
         [ ]- Temperature
         [ ]- Temperature min 
-        [ ]- Weather description (as an icon)
+        [ ]- Weather (as an icon)
 
 Other
     [ ]- Default location based on user

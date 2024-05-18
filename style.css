@@ -1,3 +1,56 @@
 * {
-    outline: 1px solid blueviolet;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.content > div {
+    padding: 5px;
+}
+
+.dayMain {
+    background-color: #ffa058;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dayAdditional {
+    background-color: #43c3ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dayAdditional > div :first-child {
+    font-size: 0.6rem;
+
+} 
+
+.forecast {
+    background-color: #65ff57;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.forecastTemperatureMin {
+    font-size: 0.6rem;
+}
+
+p {
+    text-align: center;
+}
+
+input {
+    text-align: center;
 }
