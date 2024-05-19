@@ -43,7 +43,7 @@ function ForecastDay(weatherData, dayIndex) {
 		weatherData.forecast.forecastday[dayIndex].day.condition.icon;
 }
 
-async function fetchWeather(location = 'London') {
+async function fetchWeather(location) {
 	// Call WeatherAPI to get the data from the specific location
 	// Request URL example:
 	// http://api.weatherapi.com/v1/forecast.json?key={API_KEY}&q={location}&days=3
@@ -80,15 +80,17 @@ function search(event) {
 	const weatherData = fetchWeather(value);
 	weatherData
 		.then((data) => {
-			const weatherToday = new CurrentWeather(data);
-			const weatherForecastDays = new Array(3);
-			weatherForecastDays[0] = new ForecastDay(data, 0);
-			weatherForecastDays[1] = new ForecastDay(data, 1);
-			weatherForecastDays[2] = new ForecastDay(data, 2);
+			const weather = new CurrentWeather(data);
+			const forecast = new Array(3);
+			forecast[0] = new ForecastDay(data, 0);
+			forecast[1] = new ForecastDay(data, 1);
+			forecast[2] = new ForecastDay(data, 2);
 
-			console.table(weatherToday);
-			console.table(weatherForecastDays);
-			render(weatherToday, weatherForecastDays);
+            // Modify global variables
+            w = weather;
+            f = forecast;
+
+			render(w, f);
 		})
 		.catch((error) => {
 			console.log(error);
@@ -98,7 +100,7 @@ function search(event) {
 function render(weather, forecast) {
 	const city = document.querySelector('.city');
 	// TODO if name/region/country repeats, merge
-    city.textContent =
+	city.textContent =
 		'' +
 		weather.locationName +
 		', ' +
@@ -119,49 +121,86 @@ function render(weather, forecast) {
 	if (celsius) temperature.textContent = weather.temperatureC + 'ºC';
 	else temperature.textContent = weather.temperatureF + 'ºF';
 
-	const feelsLikeTemperature = document.querySelector('.feelsLike :nth-child(2)');
-	if (celsius) feelsLikeTemperature.textContent = weather.feelsLikeTemperatureC + "ºC";
-    else feelsLikeTemperature.textContent = weather.feelsLikeTemperatureF + "ºF";
+	const feelsLikeTemperature = document.querySelector(
+		'.feelsLike :nth-child(2)'
+	);
+	if (celsius)
+		feelsLikeTemperature.textContent = weather.feelsLikeTemperatureC + 'ºC';
+	else
+		feelsLikeTemperature.textContent = weather.feelsLikeTemperatureF + 'ºF';
 
 	const humidity = document.querySelector('.humidity :nth-child(2)');
-	humidity.textContent = weather.humidity + "%";
+	humidity.textContent = weather.humidity + '%';
 
 	const rainChance = document.querySelector('.rainChance :nth-child(2)');
-	rainChance.textContent = weather.rainChance + "%";
+	rainChance.textContent = weather.rainChance + '%';
 
 	const windSpeed = document.querySelector('.windSpeed :nth-child(2)');
-	windSpeed.textContent = weather.windSpeed + "km/h";
+	windSpeed.textContent = weather.windSpeed + 'km/h';
 
-    // Forecast 3 days
+	// Forecast 3 days
 	for (let i = 1; i <= 3; i++) {
-        // Date
+		// Date
 		const forecastDate = document.querySelector(`.day${i} .forecastDate`);
-		forecastDate.textContent = forecast[i-1].dayOfWeek;
+		forecastDate.textContent = forecast[i - 1].dayOfWeek;
 
-        // Temperature
+		// Temperature
 		const forecastTemperature = document.querySelector(
 			`.day${i} .forecastTemperature`
 		);
-        if(celsius) forecastTemperature.textContent = forecast[i-1].temperatureC + "ºC";
-        else forecastTemperature.textContent = forecast[i-1].temperatureF + "ºF";
+		if (celsius)
+			forecastTemperature.textContent =
+				forecast[i - 1].temperatureC + 'ºC';
+		else
+			forecastTemperature.textContent =
+				forecast[i - 1].temperatureF + 'ºF';
 
-        // Temperature Min
+		// Temperature Min
 		const forecastTemperatureMin = document.querySelector(
 			`.day${i} .forecastTemperatureMin`
 		);
-		if(celsius) forecastTemperatureMin.textContent = forecast[i-1].temperatureCMin + "ºC";
-        else forecastTemperatureMin.textContent = forecast[i-1].temperatureFMin + "ºF";
+		if (celsius)
+			forecastTemperatureMin.textContent =
+				forecast[i - 1].temperatureCMin + 'ºC';
+		else
+			forecastTemperatureMin.textContent =
+				forecast[i - 1].temperatureFMin + 'ºF';
 
-        // Weather
+		// Weather
 		const forecastWeather = document.querySelector(
 			`.day${i} .forecastWeather img`
 		);
-		forecastWeather.src = forecast[i-1].weatherIcon;
+		forecastWeather.src = forecast[i - 1].weatherIcon;
 	}
 }
 
-// Start:
+// Application start here:
 let celsius = true;
 
+// Initial city (Barcelona):
+let w; //global weather object
+let f; //global forecast object
+
+// Fetch initial data
+const initialWeatherData = fetchWeather('Barcelona');
+initialWeatherData.then((data) => {
+	w = new CurrentWeather(data);
+	f = new Array(3);
+	f[0] = new ForecastDay(data, 0);
+	f[1] = new ForecastDay(data, 1);
+	f[2] = new ForecastDay(data, 2);
+
+	// Render initial data
+	render(w, f);
+});
+
+const CtoFButton = document.querySelector('.CtoFButton');
+CtoFButton.addEventListener('click', () => {
+	celsius = !celsius;
+	render(w, f);
+});
+
 const searchbar = document.getElementById('searchbar');
-searchbar.addEventListener('submit', search);
+searchbar.addEventListener('submit', function (event) {
+	search(event);
+});
