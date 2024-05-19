@@ -1,4 +1,4 @@
-import {convertToWeekday} from './helpers.js';
+import { convertToWeekday } from './helpers.js';
 
 // Current weather object
 function CurrentWeather(weatherData) {
@@ -8,7 +8,11 @@ function CurrentWeather(weatherData) {
 	this.locationRegion = weatherData.location.region;
 	this.locationCountry = weatherData.location.country;
 	// Date & time
-	this.localTime = weatherData.location.localtime;
+	this.weekday = convertToWeekday(weatherData.location.localtime);
+	this.date = weatherData.location.localtime.split(' ')[0];
+	this.time = weatherData.location.localtime.split(' ')[1];
+	this.formatedDate1 = this.weekday + ', ' + this.time;
+    this.formatedDate2 = this.date;
 	// Weather
 	this.conditionText = weatherData.current.condition.text;
 	this.conditionIcon = weatherData.current.condition.icon; //(url.png)
@@ -88,9 +92,9 @@ function search(event) {
 			forecast[1] = new ForecastDay(data, 1);
 			forecast[2] = new ForecastDay(data, 2);
 
-            // Modify global variables
-            w = weather;
-            f = forecast;
+			// Modify global variables
+			w = weather;
+			f = forecast;
 
 			render(w, f);
 		})
@@ -110,8 +114,11 @@ function render(weather, forecast) {
 		', ' +
 		weather.locationCountry;
 
-	const date = document.querySelector('.date');
-	date.textContent = weather.localTime;
+	const date1 = document.querySelector('.date1');
+	date1.textContent = weather.formatedDate1;
+
+    const date2 = document.querySelector('.date2');
+    date2.textContent = weather.formatedDate2;
 
 	const conditionIcon = document.querySelector('.conditionIcon img');
 	conditionIcon.src = weather.conditionIcon;
@@ -195,8 +202,8 @@ initialWeatherData.then((data) => {
 	// Render initial data
 	render(w, f);
 
-    console.table(w);
-    console.table(f);
+	console.table(w);
+	console.table(f);
 });
 
 const CtoFButton = document.querySelector('.CtoFButton');
@@ -209,4 +216,3 @@ const searchbar = document.getElementById('searchbar');
 searchbar.addEventListener('submit', function (event) {
 	search(event);
 });
-
