@@ -52,9 +52,9 @@ function ForecastDay(weatherData, dayIndex) {
 async function fetchWeather(location) {
 	// Call WeatherAPI to get the data from the specific location
 	// Request URL example:
-	// http://api.weatherapi.com/v1/forecast.json?key={API_KEY}&q={location}&days=3
+	// https://api.weatherapi.com/v1/forecast.json?key={API_KEY}&q={location}&days=3
 	const apiKey = '1f942dd367ca473d889171547241705';
-	const url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=3`;
+	const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=3`;
 
 	// fetch and check response status
 	try {
