@@ -31,11 +31,16 @@ function CurrentWeather(weatherData) {
 function ForecastDay(weatherData, dayIndex) {
 	this.date = weatherData.forecast.forecastday[dayIndex].date;
 	this.dayOfWeek = weatherData.forecast.forecastday[dayIndex].date; // (convert to day of the week)
-	this.temperatureC = weatherData.forecast.forecastday[dayIndex].day.avgtemp_c;
-	this.temperatureCMin = weatherData.forecast.forecastday[dayIndex].day.mintemp_c;
-	this.temperatureF = weatherData.forecast.forecastday[dayIndex].day.avgtemp_f;
-	this.temperatureFMin = weatherData.forecast.forecastday[dayIndex].day.mintemp_f;
-	this.weatherIcon = weatherData.forecast.forecastday[dayIndex].day.condition.icon;
+	this.temperatureC =
+		weatherData.forecast.forecastday[dayIndex].day.avgtemp_c;
+	this.temperatureCMin =
+		weatherData.forecast.forecastday[dayIndex].day.mintemp_c;
+	this.temperatureF =
+		weatherData.forecast.forecastday[dayIndex].day.avgtemp_f;
+	this.temperatureFMin =
+		weatherData.forecast.forecastday[dayIndex].day.mintemp_f;
+	this.weatherIcon =
+		weatherData.forecast.forecastday[dayIndex].day.condition.icon;
 }
 
 async function fetchWeather(location = 'London') {
@@ -63,16 +68,28 @@ async function fetchWeather(location = 'London') {
 	}
 }
 
+function search(event) {
+	// Prevent submit
+	event.preventDefault();
 
-const weatherData = fetchWeather();
-weatherData.then((data) => {
-    const weatherToday = new CurrentWeather(data);
-    const weatherForecastDay1 = new ForecastDay(data, 0);
+	// Store input value and reset form
+	const value = document.querySelector('.searchInput').value;
+	event.target.reset();
 
-    console.table(weatherToday);
-    console.table(weatherForecastDay1);
-}).catch((error)=>{
+    // Fetch weather with input location
+	const weatherData = fetchWeather(value);
+	weatherData
+		.then((data) => {
+			const weatherToday = new CurrentWeather(data);
+			const weatherForecastDay1 = new ForecastDay(data, 0);
 
-    console.log(error);
+			console.table(weatherToday);
+			console.table(weatherForecastDay1);
+		})
+		.catch((error) => {
+			console.log(error);
+		});
+}
 
-});
+const searchbar = document.getElementById('searchbar');
+searchbar.addEventListener('submit', search);
