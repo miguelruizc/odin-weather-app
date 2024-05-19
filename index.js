@@ -1,3 +1,5 @@
+import {convertToWeekday} from './helpers.js';
+
 // Current weather object
 function CurrentWeather(weatherData) {
 	// Main weather variables:
@@ -30,7 +32,7 @@ function CurrentWeather(weatherData) {
 // Forecast object
 function ForecastDay(weatherData, dayIndex) {
 	this.date = weatherData.forecast.forecastday[dayIndex].date;
-	this.dayOfWeek = weatherData.forecast.forecastday[dayIndex].date; // (convert to day of the week)
+	this.dayOfWeek = convertToWeekday(this.date); // (convert to day of the week)
 	this.temperatureC =
 		weatherData.forecast.forecastday[dayIndex].day.avgtemp_c;
 	this.temperatureCMin =
@@ -192,6 +194,9 @@ initialWeatherData.then((data) => {
 
 	// Render initial data
 	render(w, f);
+
+    console.table(w);
+    console.table(f);
 });
 
 const CtoFButton = document.querySelector('.CtoFButton');
@@ -204,3 +209,4 @@ const searchbar = document.getElementById('searchbar');
 searchbar.addEventListener('submit', function (event) {
 	search(event);
 });
+
