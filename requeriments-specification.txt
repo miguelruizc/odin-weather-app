@@ -1,26 +1,22 @@
 Searchbar: 
-    [ ]- Search location form
+    [X]- Search location form
 
 Main daily elements:
-    [ ]- Location (location, region, country)
-    [ ]- Date & time
-    [ ]- Condition (+ icon)
-    [ ]- Temperature 
-        [ ]- ºF/ºC conversion button
+    [X]- Location (location, region, country)
+    [X]- Date & time
+    [X]- Condition (+ icon)
+    [X]- Temperature 
+        [X]- ºF/ºC conversion button
 
 Additional daily elements: 
-    [ ]- Feels like temperature
-    [ ]- Humidity
-    [ ]- Chance of rain
-    [ ]- Wind Speed
+    [X]- Feels like temperature
+    [X]- Humidity
+    [X]- Chance of rain
+    [X]- Wind Speed
 
 Forecast
-    [ ]- Next 3 days
-        [ ]- Date (sunday)
-        [ ]- Temperature
-        [ ]- Temperature min 
-        [ ]- Weather (as an icon)
-
-Other
-    [ ]- Default location based on user
-    [ ]- Searchbar dropdown with real locations
+    [X]- Next 3 days
+        [X]- Date (sunday)
+        [X]- Temperature
+        [X]- Temperature min 
+        [X]- Weather (as an icon)

@@ -202,11 +202,15 @@ initialWeatherData.then((data) => {
 	render(w, f);
 });
 
-const CtoFButton = document.querySelector('.CtoFButton');
-CtoFButton.addEventListener('click', () => {
-	celsius = !celsius;
-	render(w, f);
-});
+// Celsius to Fareinheit converters (all temperature elements)
+const CtoFElements = document.querySelectorAll('.CtoF');
+CtoFElements.forEach(element=>{
+    element.addEventListener('click', () => {
+        celsius = !celsius;
+        render(w, f);
+    });
+    
+})
 
 const searchbar = document.getElementById('searchbar');
 searchbar.addEventListener('submit', function (event) {

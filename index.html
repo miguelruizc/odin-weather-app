@@ -10,22 +10,21 @@
 <body>
     <div class="content">
         <div class="dayMain">
+            <form id="searchbar">
+                <input type="text" class="searchInput" placeholder="Search location..." name="searchInput">
+                <button type="submit"><img class="searchIcon" src="./search.svg"></button>
+            </form>
             <div class="city">Barcelona</div>
             <div class="date1">Sunday, 6:00</div>
             <div class="date2">25/12/1999</div>
-            <div class="conditionIcon"><img></div>
+            <div class="temperature CtoF">20ºC</div>
             <div class="condition">Raining</div>
-            <div class="temperature">20ºC</div>
-            <button class="CtoFButton">ºF/ºC</button>
-            <form id="searchbar">
-                <input type="text" class="searchInput" placeholder="Search location..." name="searchInput">
-                <button type="submit">&#x1F50D;</button>
-            </form>
+            <div class="conditionIcon"><img></div>
         </div>
         <div class="dayAdditional">
             <div class="feelsLike">
                 <p>Feels like</p>
-                <p>18ºC</p>
+                <p class="CtoF">18ºC</p>
             </div>
             <div class="humidity">
                 <p>Humidity</p>
@@ -43,20 +42,20 @@
         <div class="forecast">
             <div class="day1">
                 <div class="forecastDate">Monday</div>
-                <div class="forecastTemperature">21ºC</div>
-                <div class="forecastTemperatureMin">15ºC</div>
+                <div class="forecastTemperature CtoF" >21ºC</div>
+                <div class="forecastTemperatureMin CtoF" >15ºC</div>
                 <div class="forecastWeather"><img></div>
             </div>
             <div class="day2">
                 <div class="forecastDate">Tuesday</div>
-                <div class="forecastTemperature">21ºC</div>
-                <div class="forecastTemperatureMin">15ºC</div>
+                <div class="forecastTemperature CtoF" >21ºC</div>
+                <div class="forecastTemperatureMin CtoF" >15ºC</div>
                 <div class="forecastWeather"><img></div>
             </div>
             <div class="day3">
                 <div class="forecastDate">Wednesday</div>
-                <div class="forecastTemperature">21ºC</div>
-                <div class="forecastTemperatureMin">15ºC</div>
+                <div class="forecastTemperature CtoF" >21ºC</div>
+                <div class="forecastTemperatureMin CtoF" >15ºC</div>
                 <div class="forecastWeather"><img></div>
             </div>
         </div>

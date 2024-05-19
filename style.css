@@ -3,24 +3,45 @@
     margin: 0px;
     box-sizing: border-box;
     font-size: 1.2rem;
+    color: white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .content {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    justify-content: center;
+    height: 100vh;
 }
 
 .content > div {
-    padding: 5px;
+    padding: 20px;
 }
 
 .dayMain {
-    background-color: #ffa058;
+    background-color: #43c3ff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.temperature {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.CtoF {
+    cursor: pointer;
 }
 
 .dayAdditional {
@@ -29,6 +50,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 10px;
 }
 
 .dayAdditional > div :first-child {
@@ -37,7 +59,7 @@
 } 
 
 .forecast {
-    background-color: #65ff57;
+    background-color: #ffffff;
     display: flex;
     gap: 20px;
     justify-content: center;
@@ -53,6 +75,13 @@ p {
 
 input {
     text-align: center;
+    color: rgb(206, 206, 206);
+    border-radius: 10px;
+    border: 1px;
+}
+
+input::placeholder {
+    color: rgb(206, 206, 206);
 }
 
 .APILinkBack,
@@ -63,5 +92,53 @@ input {
 }
 
 .APILinkBack {
-    background-color: #fcff4b;
+    background-color: #ff6464;
+}
+
+.forecast * {
+    color: rgb(61, 61, 61);
+}
+
+.city {
+    font-size: 1.3rem;
+}
+
+.date1, 
+.date2 {
+    font-size: 1rem;
+}
+
+img {
+    display: block;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.searchIcon{
+    width: 1.4rem;
+}
+
+button {
+    background: transparent;
+    border: none;
+
+}
+
+.APILinkBack 
+{
+    flex: 0 1 auto;
+}
+
+.dayMain, 
+.dayAdditional,
+.forecast {
+    flex: 1 0 auto;
+    justify-content: center;
+    align-items: center;
 }
